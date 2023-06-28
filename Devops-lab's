@@ -1,0 +1,768 @@
+1.Find your laptop cpu info/ usage 
+2.Find ip address for some websites 
+3.Inspect one website
+4.Try nslookup correct ip address and wrong ip address
+5.Access the wrong name in your browser and observe the error.
+6.Check your public IP 
+7.Working one and not working port numbers with telnet 
+take wrong names.
+8.Create a aws account , 
+  Change alias name and observe.
+9.telnet/nc test from bastion to apache
+10.create a support ticket
+11.
+ get the matching line in wp-config.php
+grep -c 
+grep -n 
+grep -w 
+grep -i 
+
+IAM
+=====
+1.learn about IAM
+2.iam url before and after.
+3.create user
+observe arn 
+create access key and secret key 
+deactive(disable)/delete 
+give console access / provide password
+login with i am use
+
+4.created a user(on-board the user to aws account) --SSO 
+for existing users/groups/roles we will add policies.
+create the policies.
+1) create iam role and attach policy(s3)
+	trusted entity: who is this role(ex: ec2) 
+
+2) create a iam role for lambda and give cloudwatch
+
+3) access aws resources from local(laptop)
+   laptop: cli 
+4)install aws cli.
+  install and check aws cli version 
+  aws --version
+5.check in your laptop aws credentials path.
+UserHome directory/.aws/
+config and credentials
+create admin user and give administration policy
+configure aws cli in your local 
+describe regions
+describe s3 
+describe iam users
+6.
+Trusted advisor
+=================
+1.check trusted advisor
+
+Cloudtrail
+===========
+1.check cloudtrail
+2.cloudtrail demo--createSubnet / CreateInstance 
+3.i wanted to track how many requests/ how many ips are coming
+how many ips are rejecting/inbound and outbound flow .
+
+EC2
+=====
+1.create ec2 and find that in cloudTrail 
+Check the event name and observe the json 
+observe the arn
+2.Take ami backup - take instance backup - take ami
+3.check instance family types
+4.create ec2 and terminate , observe the events in cloudTrail
+ondemand,spot,ri
+5.
+1)create ec2 
+2)Cost Estimation and make a link , observe the link 
+24*30 =720 
+3)https://calculator.aws/#/
+4)check limits  and try to increase the limits  with support ticket
+a.observe the case(ticket)
+5.with downtime and without downtime:
+ change the instance type (m5.2x.large--m5.4x.large)
+6.setup html application on ec2 
+create ec2 ,install ssh client in your laptop
+7.ssh to ec2 
+login : check netstat for 22 
+observe your ip address
+what is my ip in browser 
+both should match 
+do traceroute from ec2 to local.
+8. setup httpd on ec2 
+1) create ec2 
+2) login (ssh) to ec2 
+3) yum install httpd / start service 
+4) check port listening or not 
+5) check process httpd / ssh  
+6) allow 80 port at security group 
+7) check the application from outside
+9.check user is there or not 
+id root 
+id devops 
+id ec2-user 
+10.create connection_refused and solve it 
+11.install nginx on ec2 
+12.install docker on ec2 and enable as os service 
+13.create a shell script to install apache and enable os level service , check process running or not , check port is listening or not.
+14. create apache shell script with userdata 
+and check the userdata in the console.
+15.userdata,stop, observe public ip change, 
+assign elastic ip address, observe , stop and start observe public ip will not change 
+16.create own ami (apache ami) = os + apache 
+copy ami from mumbai to singapore.
+launch my own ami and observe the page.
+17.setup static website with userdata
+18.setup of java userData
+19.observe az's in other regions 
+20.create ec2 and do ping (fail), make it work and ping and disable again. 
+21.check billing and observe the regions and see ec2 running regions.
+22.enduser---publicIP(apache page/website)
+end users-----load balancer----ec2(application)--security 
+admin-----ec2(bastion/jumpServer)-----ec2(application) 
+23.copy the pem(privateKey) from local to bastion(ec2)
+24.telnet lab for working port not working port from bastion to app
+25.create ASG(auto-scaling-group) and attach to load balancer.
+        i have ec2  in A account 
+        i have an S3 bucket in my B account, how to access from A ec2 to B s3 bucket ?
+        cross account iam role and trusted identity. 
+26.test load balancer
+27.create nlb and attach bastion 
+28.alias names in local for ssh 
+29.launch nginx with autoscaling group 
+1) launch ec2 , connect ssh , install nginx and website 
+2) create ami (packer)
+3) creatate launch configuration or launch template give above ami 
+4) launch autoscaling (static and dynamic) and attach to lb
+
+30.
+1) setup ssm login to ec2 machines and try with userdata
+2) enable full monitoring and create simple cpu usage dashboard 
+4) share ami from one region to other region 
+5) encrypt root volume 
+6) check apache jmeter 
+7)lab: enable detailed monitoring(launch template/autoscaling) 
+8)lab: create dynamic auto scaling policy(nginx) attach to targetGroup
+31.create home page with your ec2 metadata 
+32.observe the system log
+33.connect with ssm ( switch users from ssm-user to ec2-user/root/root ec2-user)
+34.try to terminate and it shouldnt allow
+35.take a manual backup(snapshot) 
+36.how to check log file if i have multiple ec2 
+ping not worked ,curl applicaiton
+
+SSH
+====
+1.connect to private apache 
+ssh to the bastion 
+copy the pem file to bastion
+
+ALB
+====
+1. path based routing with alb
+/apache----apache ec2
+/nginx------nginx ec2 
+2.check website status errors in tg monitoring 
+check healthy hosts and unhealthy hosts (5xx/4xx)
+3.stop apache (check tg and monitotring, error codes)
+4. 
+1)run static application with userdata and alb with nginx and apache
+2) run java application with userdata and albe with tomcat 
+3)path based with apache , nginx , tomcat 
+4)make bastion and backend apps , alb (security of application)
+
+5.enable accessing logs at alb level
+6.find the apache logs in ec2
+access_log 
+error_log 
+check the access log/check the status code
+task: last 5 mins how many 500 errors 
+task: last 1 hour how many 200 status codes 
+lab: find the errors in error_log 
+
+
+s3
+====
+1.s3 with static web applicaiton 
+enable static website hosting(index page, error page)
+2.
+1) static website hosting--observe the url :http
+2) create your custom error page and try that url 
+3) enable cdn 
+4) observe the url : https --ssl certificates aws 
+5) create a error with ssl certificate error : try with cdn ip address and protocal https://ipaddress 
+6) white list and block list 
+3.create s3 gateway endpoint and observe in private route entry
+
+Route53
+=======
+1.Buy the domain
+Domain provider: Godaddy/Route53
+Register --with your name
+expiry 
+register in Name Servers (NS)--Godaddy 
+
+2.host based , https 
+3.forwarding the request to local of dns requests 
+4.buy the domain name 
+create a hosted zone 
+observe the name server of hosted zone 
+5.
+s3 website 
+ec2 
+bastion ---ec2 
+bastion---ec2---apache 
+lb-----ec2---apache/nginx/tomcat
+6. check your ns records of your domain
+7.have host based rules (apache.yourdomain) (nginx.yourdomain) 
+
+CloudFront
+===========
+1.path 
+host 
+https 
+try with cloudfront with your acm and register cloudfront in route53
+2.
+cloudfront with https with your domain name 
+alb with https and path based and host based (tomcat/apache/nginx)
+
+SSL
+====
+1.i wanted to have apache or nginx level also ssl certificate, how to do that
+2.create ssl error and observe the mis match of common name 
+
+VPC
+====
+1.create vpc
+2. remove igw try to access the page / bastion ,remove nat-gw.
+3.make ping fail / and make success.
+4.vpc peering 
+vpc endpoints 
+on-prem to vpc (site to site)(private to private)
+5.VPC flowlogs : inbound and outbound flow of vpc requests.
+6. if you enable vpc flow logs you can come to know packet flow of nat-gw or endpoint
+7.make a vpc peering between one vpc to another vpc
+allow routetable association 
+8.
+ site to site (VPN) 
+create customer gateway 
+create virtual private gateway 
+setup site-to-site (private to private)
+9.
+SSH tunnelling 
+how can i connect directly to private ec2 with bastion ssh tunnelling ?
+give me the command .
+
+NACL 
+==========
+1.login to bastion 
+observe the bastion subnet --goto the subnet--
+check network-ACL
+inbound rules and outbound rules 
+2.create publicNACL and add to public subnet 
+modify both inbound(22) and outbound(all)
+3.
+public nacl --public subnet---bastion
+
+private nacl --private subnet---apache
+
+data nacl 
+
+nacl---sg--bastion---sg(inbound/outbound)-----------subnet---nacl-----apache-sg(inbound/outbound)
+
+lab: use reachability analyser test
+4.
+ create nacls and associate relevant subnets 
+VPC: vpc cidr, subnet cidr, rt, nat-gw , igw, nacl, flowlogs , reach analyser 
+vpc peering: connect from one vpc to another vpc.
+
+Ephermal Port
+==============
+1.check ephermal port numbers / what are client port numbers/ dyamic port number
+2. find the ephemeral port number 
+
+Mysql(RDS)
+===========
+1.create and connect to the rds
+mysql
+2.schedule the backup in ist 12 am 
+3.created database instance 
+  connect to the database 
+  why we need to connect 
+  create users/password
+  create databases.
+4.rds telnet 
+tell me networking flow
+5.Connect to rds from bastion to rds
+show databases;
+create database
+connect to the default database, query the user table and observe your username
+6.install dbeaver and ssh tunnelling with rds setup
+7.find the ssh tunnel command line 
+lab: do ssh to apache directly from laptop 
+8.Create a Msk (kafka) cluster and create a topic and put some data and consume data 
+9.alias 
+alias restart="systemctl stop httpd && systemctl start httpd && ps -ef | grep httpd"
+10.set the alias permanently 
+home directory .bashrc / .bash_profile(we can set permanent alias) 
+dnf install php8.1
+dnf install php8.1-mysqlnd.x86_64
+11. do the tail of the access log and capture the request status code error
+tail access_log
+tail -f access_log
+head access_log (first log lines) 
+if we wanted more clean error / clear errro enable the debug level
+12.
+check the apache config file 
+/etc/httpd/conf 
+lab: set the line numbers in vi 
+lab: search specific string 
+lab: find the log level 
+lab: how to nullify a log or file 
+lab: check the os logs 
+/var/log/messages* 
+lab: how to take database backup --snapshot / automatic
+lab: how to take specific backup and restore 
+backup:
+mysqldump -h <rdsendpoint> -u mysqladmin –p  wordpress_app >backup_wordpress_app.sql
+gzip backup_wordpress_app.sql--100GB
+backup_wordpress_app.sql.gz--60GB ---S3 
+
+restore: 
+mysql -h endpoint -u username -p dbname < backup_wordpress_app.sql
+13.find the endpoint matching file name
+14.get the wordpress page and observe the logs 
+remove sg and observe the log
+15.laptop: setup apache jmeter (install java) 
+test 10000 requests to your website 
+observe the load balancer metrics and target group metrics
+observe the ec2 metrics 
+observe the rds metrics 
+16.create the read replica
+17.complete wordpress architecture
+
+SQS
+====
+1.Create SQS queue
+
+Cache
+========
+1.Create cache 
+Redis/Memcache(aws)
+2.reboot the cache (redis) it will clear the data
+3.create redis cluster and allow sg inbound rule 
+who is use redis app 
+how app connects with cache
+with the endpoint 
+how app knows endpoint 
+we will give in properties file
+4.run the applicaiton
+
+EBS
+====
+1.increase bastion volume size and take the backup 
+
+secret Manager
+===============
+1.lab: store the creds 
+vault 
+cyber arc 
+secret manager
+2.store the creds in secret manager /param store
+
+Geafana and Prometheus
+=======================
+1.monitor the tomcat 
+1) ec2 
+2) tomcat 
+3) agent (exporters) 
+4) ec2---prometheus
+5) ec2---grafana 
+cloudwatch integration with grafana
+2.
+install grafana and prometheus
+in grafana : observe the datasources 
+in prometheus checks the target status
+run a promql query up 
+3.create a dashboard for up time 
+4.configure apache server to prometheus(grfana)
+5.configure exporter to prometheus
+6.grafana default dashboard 
+import dashboard 
+1860 
+and select one wizard and observe promql (edit) 
+7.configure cloudwatch datasource and import default dashboard
+
+8.setup dashboards
+----------------------- 
+rds 
+cache
+ebs volumes 
+lb 
+ec2 
+
+9.setup apache exporter
+10.setup apache dashboard 
+
+
+Shell Script
+===============
+1.write a shell script to start node_exporter and start that
+2.Apache
+3.nginx
+4.tomcat .....
+5.check userdata in os and console 
+6.create a shell script for es and kibana and make alias 
+
+ELK
+====
+1. how to setup elastisearch cluster 
+how many nodes we go , how to select how many nodes we choose
+2.
+setup the logging Stack	
+ElasticSearch
+LogStash/Beats(agent)
+Kibana
+ELK/EFK/EBK 
+Splunk 
+3.change the heap memory (xms and xmx) --dumps jmap--heap dump 
+jmap --printHeap  processid
+change the ownership of elasticsearch folders with ec2-user
+4.setup of elasticsearch with ec2-user(change the ownership and symlinks)
+5.change the heapmemory 
+6.setup of kibana and change the port number(kibana.yml) 
+7.change kibana config bind address (kibana.yml)
+8.how to setup elastic mutli node cluster 
+9.
+rds metrics
+cache metric 
+s3 metric
+ec2 metric 
+lb metrics
+
+Githube
+===========
+1.Register to SaaS Github 
+2.create repository 
+3.i wanted to store/push the code 
+4.check .git folder and check the files in .git folder
+hooks folder 
+HEAD 
+config 
+5.create public and private key 
+ssh-keygen 
+where keys will generate 
+your home directory/.ssh
+id_rsa,id_rsa.pub
+6.create a local repo 
+create new branch feature/jira-ticket-no
+create a index.html , error.html 
+add the files to stage area, commit to local workspace
+observe the commit id 
+configure the username and email
+7. create a repo for your learning repo
+devops-xxxx
+keep all userdata scripts here
+8. practice aws cli commands from local 
+9.change the branching strategy
+develop(default)---non-prod
+main---TAG --prod
+feature----changes
+10. pre-commit to detect secrets  
+
+vs code
+========
+1.install vs code in your local 
+and refer must tools in your local 
+update the code in vs code 
+
+Jenkins
+========
+1.install the jenkins 
+2.heap memory update
+3.upgrade the jenkins 
+1) first rename the existing jenkins.war
+2)download (jenkins.war)the expected version to upgrade
+3) place in /usr/share/java/
+4) restart 
+
+4.create a job 
+repo url(http) , branch
+build now---->brought the code from scm
+check locally (os path: /var/lib/jenkins/workspace/jobName/)
+5.make a package with build number
+6.change the executors
+7.create parameter job
+8.run the commands in remote server from local
+9. CICD with two jobs 
+10.CICD with apache (html/php) ---test with rollback
+---Nexus/ SonarQube
+Observability
+11.in your wordpress-php branch make rebase
+in feature branch,force push
+branching stretegy(feature--squash/rebase---develop---main)
+
+12.stop and start 
+1) manuall--not devops practice
+2) keep script in s3 -not good practice 
+3) in ci job do one more task stop and start
+		--not good to go
+4) create a separate job --restart 
+
+we keep devops scripts in separate repos 
+dev code with devops scripts
+13.deploy java based application 
+dependenices 
+  -> java version 
+  -> branch --branching strategy 
+  -> no external dependency
+  -> tomcat ----springboot (tomcat)
+
+java---springboot----java -Xms1024M -Xmx4096M -jar app.jar(tomcat)
+14.install maven in jenkins
+1) tar/zip
+2) package installaer(yum)
+15.list the default files of that user
+in home directry
+hidden files: ls -ltra
+16.list the os variables 
+lab: setup maven path default to run from anywhere 
+1) symlink
+2) setting up PATH(.bash_profile)--permanet
+3) temporary export 
+lab: os envioronemnt variables and setup the path
+17.create a job issue with pending status
+18.adding a agent(runners) to jenkins
+19.make agent into offline status
+20.bring agent into online
+21.assign a job to specific java-agent and build the job , observe the console log(java-agent)
+22.setup agent with base packages
+git,java,maven,aws cli,zip,npm,npx,nvm
+23.webhook notification
+poll scm 
+build periodically
+24.take a backup of jenkins every day at 12:00am
+25.write a schell script to take backup of jenkins workspace and upload to s3 and run this script for every day 12:00am 
+backup file name should be : jenkins-year-month-date-hour.tgz 
+add above script into crontab in jenkins ec2(OS level)--we are not using jenkins job 
+controller----agents
+26.deploy application to apache
+1) ask the code from dev team (scm)
+2) make a pkg 
+3) deployment
+27.
+how to login from one server to another server 
+wihout password / without passing pem/without pem ?
+28.deployment 
+ssh -i pemfile user@ip
+29.
+lab: ssh without pem file
+lab: from your local to ec2-user/root user
+lab: from jenkins(jenkins user)----apache(ec2-user)
+job: cicd apache-----Pipeline
+30.
+1) create a job name: helm-deploy and take input docker-image and print
+2) configured build as  schedule(cron)
+3) Post build, clear workspace
+31. create one job name: 
+job name: docker-image-build
+image name: docker_image_$BUILD_NUMBER
+32.make dependency between two jobs
+first job is docker-image-build
+second job is helm-deploy
+(upstream and downstream job) 
+33.install parameter trigger plugin
+print the upstream job number in downstream job number
+34.download plugin manually and upload into jenkins 
+35.safeRestart plugin 
+36.write a jenkinsfile 
+37.create jenkinsfile in scm and create a job 
+38.deploy website into s3 and make static hosting
+blue-ocean: pipeline visulization , generate the code
+39.plugins: 
+blue-ocean
+job-configuration
+
+pipelines:
+1) s3 deploy
+2) apache 
+3) tomcat -----jenkins--pipeline------nexus/sonar
+4) python/reactJS/nodeJS
+40.implement end to end CICD/OE/ENduser flow on our own vpc , IaC(Terraform)
+41.deploy java application into tomcat using pipeline
+42.create private repo and add your jenkins pub into github. 
+test : jenkins server - jenkins user - in /tmp 
+https--private repo--username/password
+ssh ---publi/private---uupload pub into scm
+43.crate private repo and build a job in jenkins with credentials
+
+Terraform
+===========
+1. install the terraform
+download the binary and extract , setup the path
+2.create ec2 with terraform and security group
+3.get the datasource and run the terraform show
+observe the terraform output
+4.print in outputs arn and amiid 
+with the datablock 
+5.print type of your vpc
+string
+print type of your subnet
+list
+terraform console 
+6.create a error with lock 
+7.vm-with-terraform(all your terraform code here)
+8.store terraform state in remote(s3) and make a lock with dynamodb 
+9.userdata/keypair
+userdata/remote_exec (provisioners)
+10.create a resource if its true , skip a resource 
+count = condition ?1:0 
+install software during ec2 creation 
+aws: userdata/cloudInit
+provisioners : file/local_exec/remote_exec 
+11.include provisioners: file/executors
+12.add null_resource to stop and start jenkins
+13.get the list of values length
+count ,type,file ,length 
+module.vpc.name.id 
+14.create vpc , 3 ec2 
+15.create subnet names with 1,2,3 
+interpolation
+16.add your vpc module code into scm 
+use .gitignore
+
+Docker
+=======
+1.Register to Docker hub 
+image(hash numbers) --blob type
+2.search a tag and download specific version 
+3. pull some docker images and observe disc usage and remove images 
+4.run apache, tomcat,jenkins
+5.docker exec -it containerID sh 
+login to the container check process running or not 
+how to see existed images ?
+docker ps -a 
+6.mutli stage for java 
+multi stage for reactjs/node
+7.Docker desktop in your laptop
+8. take any base image find the root dockerfile
+base images:
+ubuntu
+debian
+centos 
+alpine 
+distroless (tomcat/apache/jenkins) 
+9.pull httpd/alpine/distroless/bitnami
+and find the image size 
+10.connect to the container /modify and observe the output
+11.write a docker-compose.yml 
+12.clear all containers and clear all images and danglinge image 
+13.
+1)multi stage dockerfile 
+2)write a multi stage docker file to setup java based application
+3)write a mutli stage dockerfile to setup spring boot (java)
+14.take monolithi code and break and add your dockerfile and jenkinsfile
+15.make jenkins as sudo user
+16.make ci of docker images frontend and backend 
+17.run the frotnend in local for test purpose
+observe the logs 
+docker logs containerID -f 
+18.docker create network hello 
+19.docker run -d image --network hello 
+20.create a multi-branch-pipline 
+
+ECR
+====
+1.create a repo and enable scan
+2.build the image with ecrFormat url 
+3.pass your own base image tag to build apache
+
+K8S(EKS)
+========
+1.Setup: 
+1) k8s on ec2
+2) eks ----1) terraform 2) eksctl 3) gui 
+3) in your laptop : Docker Desktop(enable k8s)/minikube/kind
+2.list all the objects
+3.deploy nginx deployment 
+deployment objects 
+4.
+deploy object 
+observe: pods/replicaSet 
+find the pod on which node 
+check the logs 
+describe the pod (observe the node) 
+create a pending scenario and solve it 
+get the yaml file(deploy/pod..any obect) 
+kubectl get object objectName/id -o yaml/json 
+observet the default daemonsets (kube-system)
+kubectl get ds -n kube-system
+add nodes and observe the count agai
+5.get the pod ip 
+deploy correct svc(observe endpoint) and deploy wrong label observe endpoint 
+expose pods as load balancer
+6.expose svc as load balancer 
+7.deploy frontend application in k8s and expose svc as lb 
+8.prepare application dependency env files
+1) Configmap
+2) Secret
+9.calling configmap into deployment 
+env | grep key 
+10.deploy the sidecar and check sidecar logs
+11.deploy initContainer
+12.deploy sidecar 
+describe / logs 
+13.impose resources/liveness/readiness 
+14.allocate more cpu/memory and observe pod status 
+15.create a pod pending status , describe and observe events
+16.create your own nginx deployment and your own values, two vaues files into two namespaces.
+17.create two namespace
+dev--disable serivce
+prod--enable service here
+18.install default dashboards for ingress controller,k8s monitor
+19.deploy cronjob 
+
+
+HELM
+====
+1.create tomcat based helm chart 
+replace replicaCount in default values file 
+do helm lint 
+do helm template
+2.install helm in your local 
+3.deploy ingress controller delete liveness/readiness
+bring the pod and check nginx.con
+applicaiton : helm chart/deploy,svc,ingress
+setup OE on top of eks 
+4.setup ingress controller and bring down and observe
+observe the logs
+5.create 502 bad gateway error - change the target Port number
+6.setup the metrics server 
+
+Lambda
+=======
+1.deploy lambda
+
+laptop: 
+========
+kubectl/helm/aws cli/terraform/git/docker/vscode/python/db client/ssh client/postman 
+
+Gitlab
+=======
+1.register your own runner 
+2.create a runner (url,token, enable rbac, rules, clusterwise access,tags)
+create 3 stages pipeline(build,dev-deploy,prod-deploy)
+3.declare variables
+4.create a job with validate 
+print variable value, check docker , check helm 
+5.create 3 repos 
+create one stage: make 3 jobs 
+create cd job : enable manual 
+6.
+1)implement anchors in gitlab 
+2)shared libraies and call them to gitlab
+3)kubectl get nodes output from gitlab 
+7.pod to s3/sqs (IRSA)
+8.get the running pods info in admin namespace
+9.create admin app and send data to sqs and observe the messages.
+10.consumer---connect to rds , observe the data at rds 
+11.access the end user (connect to rds)--view the data in browser 
+12.project(Frontend-consumer-rds)
