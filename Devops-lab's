@@ -191,6 +191,19 @@ enable static website hosting(index page, error page)
 5) create a error with ssl certificate error : try with cdn ip address and protocal https://ipaddress 
 6) white list and block list 
 3.create s3 gateway endpoint and observe in private route entry
+4.replicat the bucket content from one region to other region 
+5.create a lifecycle rule (move storage type other storage class)
+standard data you can download directly, glacir(backup) we need to use api/cli.
+6.bucket policy (restrict to speicifc resource)
+  Grant an EC2 instance cross-account access to an S3 bucket | AWS re:Post (repost.aws)
+7. 
+account-A---ec2---IAM role--policy(provide ARN of account b iam role)
+account-B----s3---------IAM role--another account--provide Account A id 
+8.
+bigger files
+aws s3 cp object s3://bucket/ --multi-part-upload 
+9.replicate cross account 
+
 
 Route53
 =======
