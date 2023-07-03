@@ -779,3 +779,14 @@ create cd job : enable manual
 10.consumer---connect to rds , observe the data at rds 
 11.access the end user (connect to rds)--view the data in browser 
 12.project(Frontend-consumer-rds)
+
+Ansbile
+========
+1.
+server(ec2)---install ansbile/copy pub key to all server
+write the playbooks here - apply from here /inventory
+nodes (ec2)--bring pub key from ansible server
+2.ping the server from ansible hosts 
+  ansible---ansible.cfg (home directory) ---inventory--
+3.install apache from ansible control server/ stop/start 
+4.write a playbook for tomcat/prometheus/filebeat 
