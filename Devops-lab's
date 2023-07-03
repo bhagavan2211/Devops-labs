@@ -58,8 +58,7 @@ Cloudtrail
 ===========
 1.check cloudtrail
 2.cloudtrail demo--createSubnet / CreateInstance 
-3.i wanted to track how many requests/ how many ips are coming
-how many ips are rejecting/inbound and outbound flow .
+
 
 EC2
 =====
@@ -263,6 +262,8 @@ setup site-to-site (private to private)
 SSH tunnelling 
 how can i connect directly to private ec2 with bastion ssh tunnelling ?
 give me the command .
+10.i wanted to track how many requests/ how many ips are coming
+how many ips are rejecting/inbound and outbound flow .
 
 NACL 
 ==========
